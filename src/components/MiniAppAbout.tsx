@@ -71,17 +71,17 @@ export function MiniAppAbout() {
 
   return (
     <div className="max-w-2xl">
-      <h2 className="text-4xl font-black mb-6 border-b-[3px] border-black pb-2">Поиск участника</h2>
+      <h2 className="text-4xl font-black mb-6 border-b-[3px] border-black pb-2">Поиск ученика</h2>
 
       <div className="bg-white p-6 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-6">
-        <h3 className="text-xl font-black mb-4">Введите данные для поиска</h3>
+        <h3 className="text-xl font-black mb-4">Введите данные ученика</h3>
         <form onSubmit={handleSearch} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="block font-bold text-sm mb-1">Фамилия</label>
               <input
                 type="text"
-                placeholder="Иванов"
+                placeholder="Козлов"
                 value={form.surname}
                 onChange={(e) => setForm({ ...form, surname: e.target.value })}
                 className="w-full p-3 border-[3px] border-black font-medium text-sm focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
@@ -91,7 +91,7 @@ export function MiniAppAbout() {
               <label className="block font-bold text-sm mb-1">Имя</label>
               <input
                 type="text"
-                placeholder="Иван"
+                placeholder="Артём"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full p-3 border-[3px] border-black font-medium text-sm focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
@@ -101,19 +101,9 @@ export function MiniAppAbout() {
               <label className="block font-bold text-sm mb-1">Отчество</label>
               <input
                 type="text"
-                placeholder="Иванович"
+                placeholder="Дмитриевич"
                 value={form.patronymic}
                 onChange={(e) => setForm({ ...form, patronymic: e.target.value })}
-                className="w-full p-3 border-[3px] border-black font-medium text-sm focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              />
-            </div>
-            <div>
-              <label className="block font-bold text-sm mb-1">Город</label>
-              <input
-                type="text"
-                placeholder="Москва"
-                value={form.city}
-                onChange={(e) => setForm({ ...form, city: e.target.value })}
                 className="w-full p-3 border-[3px] border-black font-medium text-sm focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               />
             </div>

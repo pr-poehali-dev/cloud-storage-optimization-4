@@ -31,8 +31,8 @@ export default function HomePage() {
           {/* Header */}
           <div className="flex flex-col items-center space-y-4 mb-10">
             <AnimatedRobot />
-            <h1 className="text-4xl font-black text-center">Поиск участников конкурсов</h1>
-            <p className="text-gray-500 font-medium text-center">Введите ФИО или город — система покажет все конкурсы, в которых участвовал человек</p>
+            <h1 className="text-4xl font-black text-center">Школа №18 — г. Ковров</h1>
+            <p className="text-gray-500 font-medium text-center">Поиск участников конкурсов и олимпиад. Введите фамилию ученика — и система покажет все конкурсы, в которых он участвовал.</p>
           </div>
 
           {/* Search Form - directly on main page */}
