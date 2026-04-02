@@ -1,13 +1,12 @@
 import { AnimatedRobot } from "@/components/AnimatedRobot"
-import { ChatPanel } from "@/components/ChatPanel"
 import { Dock } from "@/components/Dock"
 import { OSOverlay } from "@/components/OSOverlay"
+import { MiniAppAbout } from "@/components/MiniAppAbout"
 
 export default function HomePage() {
   return (
     <>
-      {/* Landing Page - Fixed height, no scroll */}
-      <div className="h-screen bg-[#FAFAFA] flex flex-col items-center justify-center p-8 relative overflow-hidden">
+      <div className="min-h-screen bg-[#FAFAFA] flex flex-col items-center p-8 relative overflow-hidden">
         {/* Neo-brutal grid background */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -28,15 +27,18 @@ export default function HomePage() {
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center justify-center flex-1 max-w-lg w-full">
-          {/* AI Robot */}
-          <div className="flex flex-col items-center space-y-4 mb-8">
+        <div className="relative z-10 flex flex-col items-center w-full max-w-2xl flex-1 py-8">
+          {/* Header */}
+          <div className="flex flex-col items-center space-y-4 mb-10">
             <AnimatedRobot />
             <h1 className="text-4xl font-black text-center">Поиск участников конкурсов</h1>
+            <p className="text-gray-500 font-medium text-center">Введите ФИО или город — система покажет все конкурсы, в которых участвовал человек</p>
           </div>
 
-          {/* Chat Panel */}
-          <ChatPanel />
+          {/* Search Form - directly on main page */}
+          <div className="w-full">
+            <MiniAppAbout />
+          </div>
         </div>
 
         <div className="relative z-10 pb-4">

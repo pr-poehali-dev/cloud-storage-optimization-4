@@ -53,15 +53,20 @@ export function MiniAppAbout() {
       return
     }
 
-    const res = await fetch(`${SEARCH_URL}?${params.toString()}`)
-    const raw = await res.json()
-    const data = typeof raw === "string" ? JSON.parse(raw) : raw
+    try {
+      const res = await fetch(`${SEARCH_URL}?${params.toString()}`)
+      const text = await res.text()
+      const data = JSON.parse(text)
+      const parsed = typeof data === "string" ? JSON.parse(data) : data
 
-    if (!res.ok) {
-      setError(data.error || "Ошибка поиска")
-    } else {
-      setResults(data.participants)
-      setSearched(true)
+      if (!res.ok) {
+        setError(parsed.error || "Ошибка поиска")
+      } else {
+        setResults(parsed.participants || [])
+        setSearched(true)
+      }
+    } catch (err) {
+      setError("Не удалось получить данные. Попробуйте ещё раз.")
     }
     setLoading(false)
   }
