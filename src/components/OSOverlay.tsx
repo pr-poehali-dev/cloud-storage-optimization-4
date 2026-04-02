@@ -7,7 +7,8 @@ import { MiniAppResume } from "./MiniAppResume"
 import { MiniAppWritings } from "./MiniAppWritings"
 import { MiniAppArt } from "./MiniAppArt"
 import { Button } from "@/components/ui/button"
-import { X, User, FileText, PenTool, Palette } from "lucide-react"
+import Icon from "@/components/ui/icon"
+import { X } from "lucide-react"
 
 type AppType = "about" | "resume" | "writings" | "art"
 
@@ -18,18 +19,18 @@ const APP_COMPONENTS: Record<AppType, React.ComponentType> = {
   art: MiniAppArt,
 }
 
-const APP_ICONS: Record<AppType, typeof User> = {
-  about: User,
-  resume: FileText,
-  writings: PenTool,
-  art: Palette,
+const APP_ICONS: Record<AppType, string> = {
+  about: "Search",
+  resume: "Trophy",
+  writings: "List",
+  art: "BarChart2",
 }
 
 const APP_LABELS: Record<AppType, string> = {
-  about: "Обо мне",
-  resume: "Резюме",
-  writings: "Статьи",
-  art: "Арт",
+  about: "Поиск",
+  resume: "Результаты",
+  writings: "Конкурсы",
+  art: "Статистика",
 }
 
 export function OSOverlay() {
@@ -56,7 +57,7 @@ export function OSOverlay() {
       <header className="flex items-center justify-between p-4 border-b-[3px] border-black bg-white">
         <div className="flex items-center gap-4">
           <OrbSlot size="sm" />
-          <h1 className="text-2xl font-black">ORBIT OS</h1>
+          <h1 className="text-2xl font-black">КОНКУРС ПОИСК</h1>
         </div>
 
         <div className="flex items-center gap-4">
@@ -76,7 +77,6 @@ export function OSOverlay() {
         <nav className="w-64 bg-white border-r-[3px] border-black p-4">
           <div className="space-y-2">
             {(Object.keys(APP_COMPONENTS) as AppType[]).map((key) => {
-              const Icon = APP_ICONS[key]
               const isActive = activeApp === key
 
               return (
@@ -89,7 +89,7 @@ export function OSOverlay() {
                       : "bg-white text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px]"
                   }`}
                 >
-                  <Icon size={20} />
+                  <Icon name={APP_ICONS[key]} size={20} />
                   {APP_LABELS[key]}
                 </Button>
               )
@@ -104,8 +104,8 @@ export function OSOverlay() {
           ) : (
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
-                <h2 className="text-4xl font-black mb-4">Добро пожаловать в Orbit OS</h2>
-                <p className="text-xl text-gray-600">Выбери приложение в боковом меню</p>
+                <h2 className="text-4xl font-black mb-4">Поиск участников конкурсов</h2>
+                <p className="text-xl text-gray-600">Выбери раздел в боковом меню</p>
               </div>
             </div>
           )}

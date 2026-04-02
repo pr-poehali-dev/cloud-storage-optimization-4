@@ -3,25 +3,24 @@ import { useState, useEffect, useRef } from "react"
 import { useUIStore } from "@/lib/ui-store"
 import { Button } from "@/components/ui/button"
 
-const QUICK_CHIPS = ["Кто ты?", "Покажи арт", "Над чем работаешь?"]
+const QUICK_CHIPS = ["Как искать?", "Открой поиск", "Как это работает?"]
 
 const RESPONSES: Record<string, string> = {
-  "Кто ты?": "Я AI-помощник Алекса! Помогаю показать работы и рассказать о нем. Хочешь узнать больше?",
-  "Покажи арт":
-    "С удовольствием покажу работы Алекса! В них сочетаются цифровые и традиционные техники.",
-  "Над чем работаешь?":
-    "Сейчас в работе несколько проектов! Алекс занимается AI-приложениями и креативным кодингом.",
+  "Как искать?": "Введи имя, фамилию, отчество или город — и система найдёт всех участников конкурсов по этим данным!",
+  "Открой поиск": "Открываю форму поиска!",
+  "Как это работает?":
+    "База содержит данные участников конкурсов: ФИО, город, конкурсы. Ищи по любому сочетанию данных.",
 }
 
 const ACTION_RESPONSES: Record<string, { response: string; action: string }> = {
-  "открой арт": { response: "Открываю галерею!", action: "art" },
-  "покажи арт": { response: "Открываю раздел с артом!", action: "art" },
-  "открой резюме": { response: "Открываю резюме!", action: "resume" },
-  "покажи резюме": { response: "Вот резюме!", action: "resume" },
-  "открой обо мне": { response: "Открываю раздел обо мне!", action: "about" },
-  "покажи обо мне": { response: "Расскажу об Алексе!", action: "about" },
-  "открой статьи": { response: "Открываю статьи!", action: "writings" },
-  "покажи статьи": { response: "Вот статьи!", action: "writings" },
+  "открой поиск": { response: "Открываю форму поиска!", action: "about" },
+  "найти участника": { response: "Открываю поиск участников!", action: "about" },
+  "открой результаты": { response: "Открываю результаты конкурсов!", action: "resume" },
+  "покажи результаты": { response: "Вот результаты конкурсов!", action: "resume" },
+  "открой конкурсы": { response: "Открываю список конкурсов!", action: "writings" },
+  "покажи конкурсы": { response: "Вот список конкурсов!", action: "writings" },
+  "открой статистику": { response: "Открываю статистику!", action: "art" },
+  "покажи статистику": { response: "Вот статистика участий!", action: "art" },
 }
 
 type AppType = "about" | "resume" | "writings" | "art"
@@ -62,7 +61,7 @@ export function ChatPanel() {
     } else {
       // Default response for non-action messages
       const defaultResponse =
-        "Интересно! Я помогу изучить работы Алекса. Попробуй написать «открой арт» или «покажи резюме»!"
+        "Я помогу найти участников конкурсов! Попробуй написать «открой поиск» или «покажи результаты»."
       setMessages((prev) => [...prev, { text: userMessage, isUser: true }, { text: defaultResponse, isUser: false }])
     }
   }
@@ -90,7 +89,7 @@ export function ChatPanel() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Напиши сообщение или команду..."
+            placeholder="Напиши вопрос или команду..."
             className="flex-1 p-3 border-[3px] border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white text-black font-medium text-sm focus:outline-none focus:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[1px] focus:translate-y-[1px] transition-all"
           />
           <Button

@@ -32,7 +32,7 @@ export default function HomePage() {
           {/* AI Robot */}
           <div className="flex flex-col items-center space-y-4 mb-8">
             <AnimatedRobot />
-            <h1 className="text-4xl font-black text-center">Привет.</h1>
+            <h1 className="text-4xl font-black text-center">Поиск участников конкурсов</h1>
           </div>
 
           {/* Chat Panel */}
