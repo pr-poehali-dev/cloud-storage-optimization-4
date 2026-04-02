@@ -55,14 +55,12 @@ export function MiniAppAbout() {
 
     try {
       const res = await fetch(`${SEARCH_URL}?${params.toString()}`)
-      const text = await res.text()
-      const data = JSON.parse(text)
-      const parsed = typeof data === "string" ? JSON.parse(data) : data
+      const data = await res.json()
 
       if (!res.ok) {
-        setError(parsed.error || "Ошибка поиска")
+        setError(data.error || "Ошибка поиска")
       } else {
-        setResults(parsed.participants || [])
+        setResults(data.participants || [])
         setSearched(true)
       }
     } catch (err) {
