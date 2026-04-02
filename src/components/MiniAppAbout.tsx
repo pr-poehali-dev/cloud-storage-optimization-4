@@ -54,7 +54,8 @@ export function MiniAppAbout() {
     }
 
     const res = await fetch(`${SEARCH_URL}?${params.toString()}`)
-    const data = await res.json()
+    const raw = await res.json()
+    const data = typeof raw === "string" ? JSON.parse(raw) : raw
 
     if (!res.ok) {
       setError(data.error || "Ошибка поиска")
